@@ -95,7 +95,7 @@ export const projects = [
     description:
       "A large full-stack school management system covering students, teachers, classes, attendance, results and records — built end-to-end with a Node.js/Express backend and MongoDB, managed and queried through MongoDB Compass.",
     tags: ["React.js", "Node.js", "Express.js", "MongoDB", "MongoDB Compass"],
-    image: "/project-5-school-information-system.png",
+    image: "/Project 5.jpg",
     liveDemo: "#",
     github: `https://${"github.com/Abdul2-lab"}`,
   },
