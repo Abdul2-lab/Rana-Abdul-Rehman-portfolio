@@ -15,7 +15,7 @@ export const profile = {
   email: "abdulrehman434gcg@gmail.com",
   linkedin: "linkedin.com/in/rana-rehman-3b71763b1",
   github: "github.com/Abdul2-lab",
-  photo: "public/profile 2.jpeg",
+  photo: "/profile 2.jpeg",
 };
 
 export const navLinks = [
@@ -59,7 +59,7 @@ export const projects = [
     description:
       "CNN-based deep learning model that classifies waste images into Cardboard, Glass and Paper — 96.56% accuracy after full preprocessing, training and evaluation.",
     tags: ["Python", "TensorFlow/Keras", "CNN"],
-    image: "public/project-1-waste-classification.png",
+    image: "/project-1-waste-classification.png",
     liveDemo: "#",
     github: `https://${"github.com/Abdul2-lab"}`,
   },
@@ -68,7 +68,7 @@ export const projects = [
     description:
       "Review sentiment analysis app built with DistilBERT and Hugging Face Transformers, classifying reviews as Positive, Neutral or Negative with 93%+ validation accuracy.",
     tags: ["Python", "NLP", "DistilBERT", "Streamlit"],
-    image: "public/project-2-sentiment-analysis.png",
+    image: "/project-2-sentiment-analysis.png",
     liveDemo: "#",
     github: `https://${"github.com/Abdul2-lab"}`,
   },
@@ -77,7 +77,7 @@ export const projects = [
     description:
       "Retrieval-Augmented Generation app for context-aware Q&A over custom documents — embeddings, vector storage, semantic search and LLM-based responses.",
     tags: ["Python", "LangChain", "ChromaDB", "LLMs"],
-    image: "public/project-3-rag-application.png",
+    image: "/project-3-rag-application.png",
     liveDemo: "#",
     github: `https://${"github.com/Abdul2-lab"}`,
   },
@@ -86,7 +86,7 @@ export const projects = [
     description:
       "Full-stack web app for managing students, attendance, fees, subjects, exams, date sheets, inventory and dashboards — frontend, backend APIs and database integration.",
     tags: ["React.js", "Node.js", "Express.js", "MongoDB"],
-    image: "public/project-4-college-management.png",
+    image: "/project-4-college-management.png",
     liveDemo: "#",
     github: `https://${"github.com/Abdul2-lab"}`,
   },
@@ -95,7 +95,7 @@ export const projects = [
     description:
       "A large full-stack school management system covering students, teachers, classes, attendance, results and records — built end-to-end with a Node.js/Express backend and MongoDB, managed and queried through MongoDB Compass.",
     tags: ["React.js", "Node.js", "Express.js", "MongoDB", "MongoDB Compass"],
-    image: "public/Project 5.jpg",
+    image: "/project-5-school-information-system.png",
     liveDemo: "#",
     github: `https://${"github.com/Abdul2-lab"}`,
   },
