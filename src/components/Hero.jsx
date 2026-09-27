@@ -1,13 +1,31 @@
-import { Download, Mail } from "lucide-react";
+import { Download, ChevronDown } from "lucide-react";
 import { profile } from "../data/portfolioData";
 import { GithubIcon, LinkedinIcon, XIcon } from "./icons/BrandIcons";
+import ParticleField from "./ParticleField";
+import { useTypewriter } from "../hooks/useTypewriter";
+
+const ROLES = [
+  "AI Engineer",
+  "Full Stack Developer",
+  "Machine Learning Enthusiast",
+  "Prompt Engineer",
+];
 
 export default function Hero() {
+  const typedRole = useTypewriter(ROLES, {
+    typingSpeed: 65,
+    deletingSpeed: 35,
+    pauseTime: 1300,
+  });
+
   return (
     <section
       id="home"
       className="relative overflow-hidden bg-[#0b1120] dark:bg-darkbg text-white scroll-mt-16"
     >
+      {/* animated particle field */}
+      <ParticleField count={44} className="opacity-70" />
+
       {/* decorative gradient blobs */}
       <div className="pointer-events-none absolute -top-24 -right-10 w-96 h-96 bg-primary/30 rounded-full blur-3xl animate-blob-slow" />
       <div className="pointer-events-none absolute bottom-0 left-1/3 w-72 h-72 bg-indigo-500/20 rounded-full blur-3xl animate-blob-slow [animation-delay:2s]" />
@@ -16,10 +34,18 @@ export default function Hero() {
         <div className="animate-hero-in">
           <p className="text-slate-300 mb-2">Hello, I'm</p>
           <h1 className="text-4xl md:text-5xl font-extrabold leading-tight">
-            <span className="text-primary-light">{profile.firstName}</span>{" "}
+            <span className="bg-gradient-to-r from-primary-light via-sky-300 to-indigo-300 bg-clip-text text-transparent">
+              {profile.firstName}
+            </span>{" "}
             <span className="text-white">{profile.lastName}</span>
           </h1>
-          <p className="mt-3 text-lg text-slate-200 font-medium">{profile.title}</p>
+
+          {/* typewriter role line — fixed height avoids layout shift */}
+          <p className="mt-3 text-lg text-slate-200 font-medium h-7 flex items-center">
+            <span>{typedRole}</span>
+            <span className="ml-0.5 w-[2px] h-5 bg-primary-light animate-caret-blink" />
+          </p>
+
           <p className="mt-4 text-slate-400 max-w-md leading-relaxed">
             {profile.tagline}
           </p>
@@ -49,12 +75,6 @@ export default function Hero() {
             >
               View CV
             </a>
-            <a
-              href="#contact"
-              className="inline-flex items-center gap-2 border border-slate-600 hover:border-primary hover:bg-primary/10 text-slate-200 font-medium px-5 py-2.5 rounded-lg transition-all hover:scale-105 active:scale-95"
-            >
-              <Mail size={16} /> Contact Me
-            </a>
           </div>
 
           <div className="mt-8 flex items-center gap-4 text-slate-300">
@@ -71,6 +91,9 @@ export default function Hero() {
         </div>
 
         <div className="relative flex justify-center md:justify-end animate-hero-in [animation-delay:150ms]">
+          {/* rotating gradient glow ring behind the photo */}
+          <div className="absolute w-72 h-72 md:w-80 md:h-80 rounded-full animate-spin-slow opacity-60 blur-2xl bg-[conic-gradient(from_0deg,#2563eb,#6366f1,#38bdf8,#2563eb)]" />
+
           <div className="relative w-64 h-80 md:w-80 md:h-96 rounded-3xl overflow-hidden ring-1 ring-white/10 shadow-2xl">
             <img
               src={profile.photo}
@@ -85,6 +108,16 @@ export default function Hero() {
           </p>
         </div>
       </div>
+
+      {/* scroll-down indicator */}
+      <a
+        href="#about"
+        aria-label="Scroll to About section"
+        className="hidden sm:flex absolute bottom-6 left-1/2 -translate-x-1/2 flex-col items-center gap-1 text-slate-400 hover:text-primary-light transition-colors animate-bounce-slow"
+      >
+        <span className="text-xs tracking-wide">Scroll</span>
+        <ChevronDown size={18} />
+      </a>
     </section>
   );
 }

@@ -9,10 +9,14 @@ import Certifications from "./components/Certifications";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
+import ScrollProgress from "./components/ScrollProgress";
+import CursorSpotlight from "./components/CursorSpotlight";
 
 function App() {
   return (
     <ThemeProvider>
+      <ScrollProgress />
+      <CursorSpotlight />
       <Navbar />
       <main>
         <Hero />

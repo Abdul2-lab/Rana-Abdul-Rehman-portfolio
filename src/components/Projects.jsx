@@ -2,6 +2,7 @@ import { ExternalLink } from "lucide-react";
 import { projects, profile } from "../data/portfolioData";
 import { GithubIcon } from "./icons/BrandIcons";
 import ScrollReveal from "./ScrollReveal";
+import TiltCard from "./TiltCard";
 
 export default function Projects() {
   return (
@@ -35,7 +36,8 @@ export default function Projects() {
             variant={i % 2 === 0 ? "left" : "right"}
             className="h-full"
           >
-            <div className="card overflow-hidden flex flex-col h-full group hover:-translate-y-1.5 hover:shadow-xl hover:border-primary/40 transition-all duration-300">
+            <TiltCard className="h-full">
+            <div className="card overflow-hidden flex flex-col h-full group hover:shadow-xl hover:border-primary/40 transition-shadow duration-300">
               <div className="overflow-hidden">
                 <img
                   src={p.image}
@@ -79,6 +81,7 @@ export default function Projects() {
                 </div>
               </div>
             </div>
+            </TiltCard>
           </ScrollReveal>
         ))}
       </div>
