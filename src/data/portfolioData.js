@@ -99,6 +99,15 @@ export const projects = [
     liveDemo: "#",
     github: `https://${"github.com/Abdul2-lab"}`,
   },
+  {
+    title: "Autonomous AI Data Scientist",
+    description:
+      "Agentic AI/ML platform — upload a dataset and 11 AI agents profile, clean, model and explain it end-to-end, with SHAP explainability and a grounded AI chat interface for asking questions about your data.",
+    tags: ["Python", "FastAPI", "Scikit-learn", "React"],
+    image: "/ai-data-scientist-project.png",
+    liveDemo: "#",
+    github: `https://${"github.com/Abdul2-lab"}`,
+  },
 ];
 
 export const experience = [
