@@ -3,6 +3,7 @@ import { Mail, MapPin, Phone, Send, CheckCircle2, XCircle } from "lucide-react";
 import { profile, formspreeEndpoint } from "../data/portfolioData";
 import { GithubIcon, LinkedinIcon } from "./icons/BrandIcons";
 import ScrollReveal from "./ScrollReveal";
+import ParticleField from "./ParticleField";
 
 export default function Contact() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
@@ -58,9 +59,12 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="bg-slate-50 dark:bg-darkcard2/40 py-16 md:py-20 transition-colors duration-300 scroll-mt-16"
+      className="relative overflow-hidden bg-slate-50 dark:bg-darkcard2/40 py-16 md:py-20 transition-colors duration-300 scroll-mt-16"
     >
-      <div className="section-container">
+      <div className="hidden dark:block absolute inset-0 opacity-40">
+        <ParticleField count={30} />
+      </div>
+      <div className="relative section-container">
         <ScrollReveal variant="up">
         <h2 className="section-eyebrow">
           <span className="section-num">06</span> Contact

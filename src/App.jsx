@@ -11,21 +11,31 @@ import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
 import ScrollProgress from "./components/ScrollProgress";
 import CursorSpotlight from "./components/CursorSpotlight";
+import CommandPalette from "./components/CommandPalette";
+import SectionDivider from "./components/SectionDivider";
 
 function App() {
   return (
     <ThemeProvider>
       <ScrollProgress />
       <CursorSpotlight />
+      <CommandPalette />
       <Navbar />
       <main>
         <Hero />
+        <SectionDivider className="bg-gradient-to-b from-[#0b1120] to-white dark:from-darkbg dark:to-darkbg" />
         <About />
+        <SectionDivider className="bg-gradient-to-b from-white to-slate-50 dark:from-darkbg dark:to-darkcard2/40" />
         <Skills />
+        <SectionDivider className="bg-gradient-to-b from-slate-50 to-white dark:from-darkcard2/40 dark:to-darkbg" />
         <Projects />
+        <SectionDivider className="bg-gradient-to-b from-white to-slate-50 dark:from-darkbg dark:to-darkcard2/40" />
         <Experience />
+        <SectionDivider className="bg-gradient-to-b from-slate-50 to-white dark:from-darkcard2/40 dark:to-darkbg" />
         <Certifications />
+        <SectionDivider className="bg-gradient-to-b from-white to-slate-50 dark:from-darkbg dark:to-darkcard2/40" />
         <Contact />
+        <SectionDivider className="bg-gradient-to-b from-slate-50 to-[#0b1120] dark:from-darkcard2/40 dark:to-black" />
       </main>
       <Footer />
       <ScrollToTop />

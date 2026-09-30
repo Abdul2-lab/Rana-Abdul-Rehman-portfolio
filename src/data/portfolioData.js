@@ -15,7 +15,9 @@ export const profile = {
   email: "abdulrehman434gcg@gmail.com",
   linkedin: "linkedin.com/in/rana-rehman-3b71763b1",
   github: "github.com/Abdul2-lab",
+  githubUsername: "Abdul2-lab",
   photo: "/profile 2.jpeg",
+  currentlyLearning: "Agentic AI Systems",
 };
 
 export const navLinks = [
@@ -39,18 +41,18 @@ export const about = {
 };
 
 export const skills = [
-  { name: "Python", icon: "python" },
-  { name: "Data Analysis", icon: "data" },
-  { name: "Machine Learning", icon: "ai" },
-  { name: "Deep Learning", icon: "dl" },
-  { name: "NLP", icon: "nlp" },
-  { name: "LLMs / RAG", icon: "llm" },
-  { name: "React.js", icon: "react" },
-  { name: "Node.js / Express", icon: "node" },
-  { name: "MongoDB", icon: "mongo" },
-  { name: "Tailwind CSS", icon: "tailwind" },
-  { name: "CCNA / Networking", icon: "network" },
-  { name: "Git & GitHub", icon: "github" },
+  { name: "Python", icon: "python", level: 90 },
+  { name: "Data Analysis", icon: "data", level: 85 },
+  { name: "Machine Learning", icon: "ai", level: 80 },
+  { name: "Deep Learning", icon: "dl", level: 72 },
+  { name: "NLP", icon: "nlp", level: 75 },
+  { name: "LLMs / RAG", icon: "llm", level: 82 },
+  { name: "React.js", icon: "react", level: 88 },
+  { name: "Node.js / Express", icon: "node", level: 78 },
+  { name: "MongoDB", icon: "mongo", level: 75 },
+  { name: "Tailwind CSS", icon: "tailwind", level: 90 },
+  { name: "CCNA / Networking", icon: "network", level: 65 },
+  { name: "Git & GitHub", icon: "github", level: 85 },
 ];
 
 export const projects = [
@@ -62,6 +64,14 @@ export const projects = [
     image: "/project-1-waste-classification.png",
     liveDemo: "#",
     github: `https://${"github.com/Abdul2-lab"}`,
+    details: {
+      problem:
+        "Manual waste sorting is slow, inconsistent and error-prone, and most recycling facilities still rely on people to separate materials by eye.",
+      approach:
+        "Collected and preprocessed a labeled image dataset across three categories, then designed and trained a convolutional neural network in TensorFlow/Keras, tuning augmentation, layers and hyperparameters to reduce overfitting on a fairly small dataset.",
+      result:
+        "Reached 96.56% classification accuracy on the held-out validation set, with a lightweight enough model to run predictions in near real time.",
+    },
   },
   {
     title: "AI-Powered Sentiment Analysis System",
@@ -71,6 +81,14 @@ export const projects = [
     image: "/project-2-sentiment-analysis.png",
     liveDemo: "#",
     github: `https://${"github.com/Abdul2-lab"}`,
+    details: {
+      problem:
+        "Businesses receive far more customer reviews than anyone can realistically read one by one, making it hard to track overall sentiment or catch problems early.",
+      approach:
+        "Fine-tuned a DistilBERT transformer model on labeled review data using Hugging Face, then wrapped it in a Streamlit app so non-technical users can paste in reviews and instantly see a sentiment breakdown.",
+      result:
+        "Achieved 93%+ validation accuracy across Positive, Neutral and Negative classes, with an interface simple enough for a non-developer to use directly.",
+    },
   },
   {
     title: "AI-Powered RAG Application",
@@ -80,6 +98,14 @@ export const projects = [
     image: "/project-3-rag-application.png",
     liveDemo: "#",
     github: `https://${"github.com/Abdul2-lab"}`,
+    details: {
+      problem:
+        "General-purpose LLMs don't know anything about a person's or company's private documents, and often hallucinate answers when asked about content they were never trained on.",
+      approach:
+        "Built a Retrieval-Augmented Generation pipeline with LangChain — chunking and embedding documents, storing vectors in ChromaDB, and retrieving the most relevant passages to ground each LLM response before it's generated.",
+      result:
+        "A working Q&A system that answers questions about custom documents with grounded, source-backed responses instead of guesses.",
+    },
   },
   {
     title: "College Information Management System",
@@ -89,6 +115,14 @@ export const projects = [
     image: "/project-4-college-management.png",
     liveDemo: "#",
     github: `https://${"github.com/Abdul2-lab"}`,
+    details: {
+      problem:
+        "Colleges often juggle student records, attendance, fees and exams across scattered spreadsheets and paper registers, making day-to-day administration slow and error-prone.",
+      approach:
+        "Designed a full-stack system with a React frontend and a Node.js/Express REST API backed by MongoDB, covering students, attendance, fees, subjects, exams, date sheets and inventory in one connected dashboard.",
+      result:
+        "A single system that replaces multiple manual processes with structured records, dashboards and APIs that different parts of the college can rely on.",
+    },
   },
   {
     title: "School Information System",
@@ -98,6 +132,14 @@ export const projects = [
     image: "/Project 5.jpg",
     liveDemo: "#",
     github: `https://${"github.com/Abdul2-lab"}`,
+    details: {
+      problem:
+        "Schools need a single, reliable place to manage students, teachers, classes, attendance and results — most existing tools are either too generic or too expensive for smaller institutions.",
+      approach:
+        "Built a large full-stack system end-to-end: a Node.js/Express backend with a MongoDB database (designed, queried and debugged through MongoDB Compass), and a React frontend covering every core school workflow.",
+      result:
+        "A complete, scalable school management platform that handles the full student lifecycle from enrollment to results in one place.",
+    },
   },
   {
     title: "Autonomous AI Data Scientist",
@@ -107,6 +149,14 @@ export const projects = [
     image: "/ai-data-scientist-project.png",
     liveDemo: "#",
     github: `https://${"github.com/Abdul2-lab"}`,
+    details: {
+      problem:
+        "Doing solid exploratory data analysis and model comparison by hand is repetitive and time-consuming — profiling, cleaning, trying multiple models and explaining results usually takes a data scientist hours per dataset.",
+      approach:
+        "Designed an agentic pipeline of 11 specialized AI agents (profiling, data quality, EDA, modeling and reporting) orchestrated behind a FastAPI backend, training and comparing multiple Scikit-learn models automatically, adding SHAP for explainability, and exposing it all through a React dashboard with a grounded AI chat for asking questions about the data.",
+      result:
+        "Upload a dataset and get automatic profiling, cleaning, model comparison (accuracy, F1, ROC-AUC), a confusion matrix and SHAP explanations end-to-end — turning a multi-hour manual workflow into a few minutes.",
+    },
   },
 ];
 

@@ -1,5 +1,5 @@
 import { useEffect, useState, useMemo } from "react";
-import { Menu, X, Moon, Sun } from "lucide-react";
+import { Menu, X, Moon, Sun, Search } from "lucide-react";
 import { navLinks } from "../data/portfolioData";
 import { useTheme } from "../context/ThemeContext";
 import { useActiveSection } from "../hooks/useActiveSection";
@@ -64,6 +64,17 @@ export default function Navbar() {
         </ul>
 
         <div className="flex items-center gap-3">
+          <button
+            onClick={() => window.dispatchEvent(new CustomEvent("open-command-palette"))}
+            aria-label="Open command palette"
+            className="hidden sm:flex items-center gap-2 text-sm text-slate-400 border border-slate-200 dark:border-slate-700 rounded-lg px-3 py-1.5 hover:border-primary hover:text-primary transition-colors"
+          >
+            <Search size={14} />
+            <span className="hidden lg:inline">Quick search</span>
+            <kbd className="text-[10px] font-medium border border-slate-300 dark:border-slate-600 rounded px-1.5 py-0.5">
+              ⌘K
+            </kbd>
+          </button>
           <button
             onClick={toggleTheme}
             aria-label="Toggle theme"

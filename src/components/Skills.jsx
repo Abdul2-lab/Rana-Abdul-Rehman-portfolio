@@ -32,8 +32,12 @@ const iconMap = {
 
 export default function Skills() {
   return (
-    <section id="skills" className="bg-slate-50 dark:bg-darkcard2/40 py-16 md:py-20 transition-colors duration-300 scroll-mt-16">
-      <div className="section-container">
+    <section id="skills" className="relative bg-slate-50 dark:bg-darkcard2/40 py-16 md:py-20 transition-colors duration-300 scroll-mt-16 overflow-hidden">
+      {/* decorative blobs */}
+      <div className="pointer-events-none absolute top-10 right-0 w-80 h-80 bg-indigo-400/10 dark:bg-indigo-500/10 rounded-full blur-3xl" />
+      <div className="pointer-events-none absolute -bottom-16 -left-10 w-64 h-64 bg-primary/10 dark:bg-primary/10 rounded-full blur-3xl" />
+
+      <div className="relative section-container">
         <ScrollReveal variant="up">
         <h2 className="section-eyebrow">
           <span className="section-num">02</span> Skills
@@ -58,6 +62,12 @@ export default function Skills() {
                   <span className="text-xs font-medium text-slate-700 dark:text-slate-300 text-center">
                     {skill.name}
                   </span>
+                  <div className="w-full h-1 rounded-full bg-slate-200 dark:bg-slate-700 mt-1 overflow-hidden">
+                    <div
+                      className="h-full rounded-full bg-gradient-to-r from-primary to-indigo-400"
+                      style={{ width: `${skill.level ?? 70}%` }}
+                    />
+                  </div>
                 </div>
               </ScrollReveal>
             );
