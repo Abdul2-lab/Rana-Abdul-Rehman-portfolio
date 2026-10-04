@@ -1,19 +1,21 @@
 import { useEffect, useRef } from "react";
+import { useDataSaver } from "../context/DataSaverContext";
 
 /**
  * A fixed, pointer-events-none radial glow that follows the mouse,
  * giving dark sections a subtle cinematic spotlight feel. No-op on
- * touch-only devices and respects prefers-reduced-motion.
+ * touch-only devices, in lite mode, and respects prefers-reduced-motion.
  */
 export default function CursorSpotlight() {
   const ref = useRef(null);
+  const { dataSaver } = useDataSaver();
 
   useEffect(() => {
     const isTouch = window.matchMedia("(hover: none)").matches;
     const reducedMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
     ).matches;
-    if (isTouch || reducedMotion) return;
+    if (isTouch || reducedMotion || dataSaver) return;
 
     const el = ref.current;
     if (!el) return;
@@ -32,7 +34,7 @@ export default function CursorSpotlight() {
       window.removeEventListener("mousemove", handleMove);
       if (raf) cancelAnimationFrame(raf);
     };
-  }, []);
+  }, [dataSaver]);
 
   return (
     <div

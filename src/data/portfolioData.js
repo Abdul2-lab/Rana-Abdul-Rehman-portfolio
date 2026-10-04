@@ -18,6 +18,47 @@ export const profile = {
   githubUsername: "Abdul2-lab",
   photo: "/profile 2.jpeg",
   currentlyLearning: "Agentic AI Systems",
+  openToWork: true,
+};
+
+// Used in index.html <meta name="keywords"> and JSON-LD — helps recruiters'
+// ATS systems and Google match this page to relevant searches.
+export const seoKeywords = [
+  "Rana Abdul Rehman",
+  "AI Engineer Pakistan",
+  "Full Stack Developer Pakistan",
+  "Machine Learning Engineer",
+  "Python Developer",
+  "React Developer",
+  "Node.js Developer",
+  "NLP Engineer",
+  "Deep Learning",
+  "CNN",
+  "RAG LLM Developer",
+  "MERN Stack Developer",
+  "Gujranwala Pakistan Developer",
+  "GCUF Computer Science",
+];
+
+// Short, plain-language blurb per technology — shown as a hover tooltip on
+// project tag badges in the Projects section.
+export const techDescriptions = {
+  Python: "General-purpose language used for ML, data processing and backend logic.",
+  "TensorFlow/Keras": "Deep learning framework used to build and train the CNN model.",
+  CNN: "Convolutional Neural Network — a deep learning architecture for image classification.",
+  NLP: "Natural Language Processing — teaching models to understand human text.",
+  DistilBERT: "A smaller, faster version of BERT used for text classification.",
+  Streamlit: "Python framework for quickly building interactive data/ML web apps.",
+  LangChain: "Framework for chaining LLM calls, retrieval and tools together.",
+  ChromaDB: "Vector database used to store and search document embeddings.",
+  LLMs: "Large Language Models — the AI models that generate and understand text.",
+  "React.js": "JavaScript library used to build the interactive frontend UI.",
+  "Node.js": "JavaScript runtime used to build the backend server.",
+  "Express.js": "Minimal Node.js framework used to build REST APIs.",
+  MongoDB: "NoSQL database used to store application data as documents.",
+  "MongoDB Compass": "GUI tool used to visually manage and query the MongoDB database.",
+  FastAPI: "Modern Python framework used to build fast, typed backend APIs.",
+  "Scikit-learn": "Python library used to train and compare classic ML models.",
 };
 
 export const navLinks = [
@@ -156,6 +197,7 @@ export const projects = [
         "Designed an agentic pipeline of 11 specialized AI agents (profiling, data quality, EDA, modeling and reporting) orchestrated behind a FastAPI backend, training and comparing multiple Scikit-learn models automatically, adding SHAP for explainability, and exposing it all through a React dashboard with a grounded AI chat for asking questions about the data.",
       result:
         "Upload a dataset and get automatic profiling, cleaning, model comparison (accuracy, F1, ROC-AUC), a confusion matrix and SHAP explanations end-to-end — turning a multi-hour manual workflow into a few minutes.",
+      hasDiagram: true,
     },
   },
 ];

@@ -3,6 +3,7 @@ import { profile } from "../data/portfolioData";
 import { GithubIcon, LinkedinIcon, XIcon } from "./icons/BrandIcons";
 import ParticleField from "./ParticleField";
 import { useTypewriter } from "../hooks/useTypewriter";
+import { useDataSaver } from "../context/DataSaverContext";
 
 const ROLES = [
   "AI Engineer",
@@ -12,6 +13,7 @@ const ROLES = [
 ];
 
 export default function Hero() {
+  const { dataSaver } = useDataSaver();
   const typedRole = useTypewriter(ROLES, {
     typingSpeed: 65,
     deletingSpeed: 35,
@@ -23,15 +25,24 @@ export default function Hero() {
       id="home"
       className="relative overflow-hidden bg-[#0b1120] dark:bg-darkbg text-white scroll-mt-16"
     >
-      {/* animated particle field */}
-      <ParticleField count={44} className="opacity-70" />
+      {/* animated particle field (skipped in lite mode) */}
+      {!dataSaver && <ParticleField count={44} className="opacity-70" />}
 
       {/* decorative gradient blobs */}
-      <div className="pointer-events-none absolute -top-24 -right-10 w-96 h-96 bg-primary/30 rounded-full blur-3xl animate-blob-slow" />
-      <div className="pointer-events-none absolute bottom-0 left-1/3 w-72 h-72 bg-indigo-500/20 rounded-full blur-3xl animate-blob-slow [animation-delay:2s]" />
+      <div className={`pointer-events-none absolute -top-24 -right-10 w-96 h-96 bg-primary/30 rounded-full blur-3xl ${dataSaver ? "" : "animate-blob-slow"}`} />
+      <div className={`pointer-events-none absolute bottom-0 left-1/3 w-72 h-72 bg-indigo-500/20 rounded-full blur-3xl ${dataSaver ? "" : "animate-blob-slow [animation-delay:2s]"}`} />
 
       <div className="section-container relative grid md:grid-cols-2 gap-10 items-center py-16 md:py-24">
         <div className="animate-hero-in">
+          {profile.openToWork && (
+            <span className="inline-flex items-center gap-1.5 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-semibold px-3 py-1 rounded-full mb-4">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400" />
+              </span>
+              Open to opportunities
+            </span>
+          )}
           <p className="text-slate-300 mb-2">Hello, I'm</p>
           <h1 className="text-4xl md:text-5xl font-extrabold leading-tight">
             <span className="bg-gradient-to-r from-primary-light via-sky-300 to-indigo-300 bg-clip-text text-transparent">
@@ -91,8 +102,8 @@ export default function Hero() {
         </div>
 
         <div className="relative flex justify-center md:justify-end animate-hero-in [animation-delay:150ms]">
-          {/* rotating gradient glow ring behind the photo */}
-          <div className="absolute w-72 h-72 md:w-80 md:h-80 rounded-full animate-spin-slow opacity-60 blur-2xl bg-[conic-gradient(from_0deg,#2563eb,#6366f1,#38bdf8,#2563eb)]" />
+          {/* rotating gradient glow ring behind the photo (static in lite mode) */}
+          <div className={`absolute w-72 h-72 md:w-80 md:h-80 rounded-full opacity-60 blur-2xl bg-[conic-gradient(from_0deg,#2563eb,#6366f1,#38bdf8,#2563eb)] ${dataSaver ? "" : "animate-spin-slow"}`} />
 
           <div className="relative w-64 h-80 md:w-80 md:h-96 rounded-3xl overflow-hidden ring-1 ring-white/10 shadow-2xl">
             <img

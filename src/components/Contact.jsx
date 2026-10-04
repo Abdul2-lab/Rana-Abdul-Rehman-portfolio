@@ -4,8 +4,10 @@ import { profile, formspreeEndpoint } from "../data/portfolioData";
 import { GithubIcon, LinkedinIcon } from "./icons/BrandIcons";
 import ScrollReveal from "./ScrollReveal";
 import ParticleField from "./ParticleField";
+import { useDataSaver } from "../context/DataSaverContext";
 
 export default function Contact() {
+  const { dataSaver } = useDataSaver();
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   // status: "idle" | "sending" | "success" | "error"
   const [status, setStatus] = useState("idle");
@@ -61,9 +63,11 @@ export default function Contact() {
       id="contact"
       className="relative overflow-hidden bg-slate-50 dark:bg-darkcard2/40 py-16 md:py-20 transition-colors duration-300 scroll-mt-16"
     >
-      <div className="hidden dark:block absolute inset-0 opacity-40">
-        <ParticleField count={30} />
-      </div>
+      {!dataSaver && (
+        <div className="hidden dark:block absolute inset-0 opacity-40">
+          <ParticleField count={30} />
+        </div>
+      )}
       <div className="relative section-container">
         <ScrollReveal variant="up">
         <h2 className="section-eyebrow">

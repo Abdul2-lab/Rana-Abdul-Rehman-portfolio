@@ -1,5 +1,6 @@
 import { navLinks, profile } from "../data/portfolioData";
 import { GithubIcon, LinkedinIcon, XIcon } from "./icons/BrandIcons";
+import ShareButtons from "./ShareButtons";
 
 export default function Footer() {
   return (
@@ -36,6 +37,9 @@ export default function Footer() {
             <XIcon size={16} />
           </a>
         </div>
+      </div>
+      <div className="flex justify-center mt-6">
+        <ShareButtons />
       </div>
       <p className="text-center text-xs mt-6">
         © 2026 {profile.name}. All rights reserved.

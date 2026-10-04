@@ -1,11 +1,13 @@
 import { useEffect, useState, useMemo } from "react";
-import { Menu, X, Moon, Sun, Search } from "lucide-react";
+import { Menu, X, Moon, Sun, Search, Zap, ZapOff } from "lucide-react";
 import { navLinks } from "../data/portfolioData";
 import { useTheme } from "../context/ThemeContext";
+import { useDataSaver } from "../context/DataSaverContext";
 import { useActiveSection } from "../hooks/useActiveSection";
 
 export default function Navbar() {
   const { theme, toggleTheme } = useTheme();
+  const { dataSaver, toggleDataSaver } = useDataSaver();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -30,14 +32,14 @@ export default function Navbar() {
       }`}
     >
       <nav className="section-container flex items-center justify-between h-16">
-        <a href="#home" className="flex items-center gap-2 font-bold text-slate-900 dark:text-white">
-          <span className="w-8 h-8 rounded-lg bg-primary text-white flex items-center justify-center text-sm">
+        <a href="#home" className="shrink-0 flex items-center gap-2 font-bold text-slate-900 dark:text-white">
+          <span className="w-8 h-8 rounded-lg bg-primary text-white flex items-center justify-center text-sm shrink-0">
             R
           </span>
-          <span className="hidden sm:inline">Rana Abdul Rehman</span>
+          <span className="hidden lg:inline whitespace-nowrap">Rana Abdul Rehman</span>
         </a>
 
-        <ul className="hidden md:flex items-center gap-1 text-sm font-medium text-slate-600 dark:text-slate-300">
+        <ul className="hidden md:flex items-center gap-0.5 lg:gap-1 text-sm font-medium text-slate-600 dark:text-slate-300 shrink">
           {navLinks.map((link) => {
             const id = link.href.replace("#", "");
             const isActive = activeId === id;
@@ -45,7 +47,7 @@ export default function Navbar() {
               <li key={link.href}>
                 <a
                   href={link.href}
-                  className={`relative px-3 py-2 rounded-md transition-colors ${
+                  className={`relative px-2 lg:px-3 py-2 rounded-md transition-colors ${
                     isActive
                       ? "text-primary"
                       : "hover:text-primary"
@@ -63,17 +65,29 @@ export default function Navbar() {
           })}
         </ul>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-3 shrink-0">
           <button
             onClick={() => window.dispatchEvent(new CustomEvent("open-command-palette"))}
-            aria-label="Open command palette"
-            className="hidden sm:flex items-center gap-2 text-sm text-slate-400 border border-slate-200 dark:border-slate-700 rounded-lg px-3 py-1.5 hover:border-primary hover:text-primary transition-colors"
+            aria-label="Open quick search"
+            className="flex items-center gap-2 text-sm text-slate-400 border border-slate-200 dark:border-slate-700 rounded-lg px-2.5 sm:px-3 py-1.5 hover:border-primary hover:text-primary transition-colors whitespace-nowrap"
           >
-            <Search size={14} />
-            <span className="hidden lg:inline">Quick search</span>
-            <kbd className="text-[10px] font-medium border border-slate-300 dark:border-slate-600 rounded px-1.5 py-0.5">
+            <Search size={14} className="shrink-0" />
+            <span className="hidden xl:inline whitespace-nowrap">Quick search</span>
+            <kbd className="hidden lg:inline text-[10px] font-medium border border-slate-300 dark:border-slate-600 rounded px-1.5 py-0.5">
               ⌘K
             </kbd>
+          </button>
+          <button
+            onClick={toggleDataSaver}
+            aria-label="Toggle lite mode (fewer animations, less data)"
+            title="Lite mode — fewer animations, less data"
+            className={`hidden md:flex w-9 h-9 rounded-full items-center justify-center border transition-colors ${
+              dataSaver
+                ? "border-primary text-primary bg-primary/10"
+                : "border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:text-primary hover:border-primary"
+            }`}
+          >
+            {dataSaver ? <ZapOff size={16} /> : <Zap size={16} />}
           </button>
           <button
             onClick={toggleTheme}
@@ -112,6 +126,28 @@ export default function Navbar() {
                 </li>
               );
             })}
+            <li className="pt-3 border-t border-slate-200 dark:border-slate-800">
+              <button
+                onClick={toggleDataSaver}
+                className="flex items-center justify-between w-full"
+              >
+                <span className="flex items-center gap-2">
+                  {dataSaver ? <ZapOff size={16} /> : <Zap size={16} />}
+                  Lite mode
+                </span>
+                <span
+                  className={`w-9 h-5 rounded-full relative transition-colors ${
+                    dataSaver ? "bg-primary" : "bg-slate-300 dark:bg-slate-600"
+                  }`}
+                >
+                  <span
+                    className={`absolute top-0.5 w-4 h-4 rounded-full bg-white transition-transform ${
+                      dataSaver ? "translate-x-4" : "translate-x-0.5"
+                    }`}
+                  />
+                </span>
+              </button>
+            </li>
           </ul>
         </div>
       )}

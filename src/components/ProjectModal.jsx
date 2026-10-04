@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { X, ExternalLink } from "lucide-react";
 import { GithubIcon } from "./icons/BrandIcons";
+import ArchitectureDiagram from "./ArchitectureDiagram";
 
 export default function ProjectModal({ project, onClose }) {
   useEffect(() => {
@@ -86,6 +87,8 @@ export default function ProjectModal({ project, onClose }) {
               </div>
             </div>
           )}
+
+          {details?.hasDiagram && <ArchitectureDiagram />}
 
           <div className="flex items-center gap-4 mt-7 pt-5 border-t border-slate-200 dark:border-slate-700">
             <a

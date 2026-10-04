@@ -1,16 +1,29 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { ExternalLink, BookOpen } from "lucide-react";
-import { projects, profile } from "../data/portfolioData";
+import { projects, profile, techDescriptions } from "../data/portfolioData";
 import { GithubIcon } from "./icons/BrandIcons";
 import ScrollReveal from "./ScrollReveal";
 import TiltCard from "./TiltCard";
 import ProjectModal from "./ProjectModal";
+import Tooltip from "./Tooltip";
 
 export default function Projects() {
   const [selected, setSelected] = useState(null);
+  const [activeTag, setActiveTag] = useState("All");
+
+  const allTags = useMemo(() => {
+    const set = new Set();
+    projects.forEach((p) => p.tags.forEach((t) => set.add(t)));
+    return ["All", ...Array.from(set)];
+  }, []);
+
+  const visibleProjects = useMemo(() => {
+    if (activeTag === "All") return projects;
+    return projects.filter((p) => p.tags.includes(activeTag));
+  }, [activeTag]);
 
   return (
-    <section id="projects" className="section-container py-16 md:py-20 scroll-mt-16">
+    <section id="projects" className="section-container py-16 md:py-20 scroll-mt-16 overflow-x-hidden">
       <ScrollReveal variant="up">
       <div className="flex items-start justify-between flex-wrap gap-3 mb-2">
         <div>
@@ -30,10 +43,26 @@ export default function Projects() {
           View All Projects <span aria-hidden>→</span>
         </a>
       </div>
+
+      <div className="flex flex-wrap gap-2 mt-6 mb-2">
+        {allTags.map((tag) => (
+          <button
+            key={tag}
+            onClick={() => setActiveTag(tag)}
+            className={`text-xs font-medium px-3 py-1.5 rounded-full border transition-colors ${
+              activeTag === tag
+                ? "bg-primary text-white border-primary"
+                : "border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:border-primary hover:text-primary"
+            }`}
+          >
+            {tag}
+          </button>
+        ))}
+      </div>
       </ScrollReveal>
 
-      <div className="mt-8 grid md:grid-cols-3 gap-6">
-        {projects.map((p, i) => (
+      <div className="mt-6 grid md:grid-cols-3 gap-6">
+        {visibleProjects.map((p, i) => (
           <ScrollReveal
             key={p.title}
             delay={(i % 3) * 100}
@@ -68,12 +97,14 @@ export default function Projects() {
                 </p>
                 <div className="flex flex-wrap gap-2 mt-4">
                   {p.tags.map((t) => (
-                    <span
-                      key={t}
-                      className="badge bg-primary/10 text-primary dark:bg-primary/15"
-                    >
-                      {t}
-                    </span>
+                    <Tooltip key={t} text={techDescriptions[t]}>
+                      <span
+                        onClick={(e) => e.stopPropagation()}
+                        className="badge bg-primary/10 text-primary dark:bg-primary/15 cursor-help"
+                      >
+                        {t}
+                      </span>
+                    </Tooltip>
                   ))}
                 </div>
                 <div className="flex items-center gap-4 mt-4 text-sm">
@@ -102,6 +133,12 @@ export default function Projects() {
           </ScrollReveal>
         ))}
       </div>
+
+      {visibleProjects.length === 0 && (
+        <p className="text-center text-slate-400 py-10 text-sm">
+          No projects match this filter yet.
+        </p>
+      )}
 
       {selected && (
         <ProjectModal project={selected} onClose={() => setSelected(null)} />
